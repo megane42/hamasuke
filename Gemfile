@@ -10,6 +10,7 @@ gem "puma"
 gem "importmap-rails"
 gem "turbo-rails"
 gem "stimulus-rails"
+gem "bootstrap"
 gem "bootsnap", require: false
 
 group :development do
