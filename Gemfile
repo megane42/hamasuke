@@ -13,6 +13,7 @@ gem "stimulus-rails"
 gem "bootsnap", require: false
 
 group :development do
+  gem "annotate"
   gem "web-console"
   gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
 end
