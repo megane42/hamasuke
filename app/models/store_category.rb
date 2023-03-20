@@ -12,5 +12,6 @@
 #  index_store_categories_on_name  (name) UNIQUE
 #
 class StoreCategory < ApplicationRecord
+  has_many :stores
   enum name: { general: "通常店", local: "地域協力店" }
 end
