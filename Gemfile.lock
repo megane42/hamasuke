@@ -176,6 +176,8 @@ GEM
     rails-html-sanitizer (1.5.0)
       loofah (~> 2.19, >= 2.19.1)
     rake (13.0.6)
+    redis-client (0.14.0)
+      connection_pool
     reline (0.3.2)
       io-console (~> 0.5)
     sassc (2.4.0)
@@ -186,6 +188,11 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    sidekiq (7.0.7)
+      concurrent-ruby (< 2)
+      connection_pool (>= 2.3.0)
+      rack (>= 2.2.4)
+      redis-client (>= 0.11.0)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -228,6 +235,7 @@ DEPENDENCIES
   mysql2
   puma
   rails!
+  sidekiq
   sprockets-rails
   stimulus-rails
   turbo-rails
