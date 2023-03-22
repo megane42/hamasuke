@@ -11,6 +11,7 @@ gem "importmap-rails"
 gem "turbo-rails"
 gem "stimulus-rails"
 gem "bootstrap"
+gem 'mini_racer'
 gem "bootsnap", require: false
 gem "sidekiq"
 
