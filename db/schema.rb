@@ -26,11 +26,20 @@ ActiveRecord::Schema[7.1].define(version: 2023_03_20_095537) do
     t.index ["telephone"], name: "index_gift_issue_permissions_on_telephone"
   end
 
-  create_table "products", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "product_categories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_product_categories_on_name", unique: true
+  end
+
+  create_table "products", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "product_category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["name"], name: "index_products_on_name", unique: true
+    t.index ["product_category_id"], name: "index_products_on_product_category_id"
   end
 
   create_table "store_categories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -51,5 +60,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_03_20_095537) do
 
   add_foreign_key "gift_issue_permissions", "products"
   add_foreign_key "gift_issue_permissions", "stores"
+  add_foreign_key "products", "product_categories"
   add_foreign_key "stores", "store_categories"
 end

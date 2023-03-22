@@ -2,6 +2,7 @@ class CreateProducts < ActiveRecord::Migration[7.1]
   def change
     create_table :products do |t|
       t.string :name, null: false, index: { unique: true }
+      t.references :product_category, null: false, foreign_key: true
 
       t.timestamps
     end
