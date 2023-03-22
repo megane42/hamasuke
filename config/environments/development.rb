@@ -59,6 +59,9 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
+  # scss が都度コンパイルされるようにする (https://github.com/rails/rails/pull/42984)
+  config.assets.debug = true
+
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
 
