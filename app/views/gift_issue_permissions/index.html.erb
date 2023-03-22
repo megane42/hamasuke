@@ -1,0 +1,26 @@
+<h1 class="py-5 fw-bold">ギフト発行対象一覧</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col"><%= GiftIssuePermission.human_attribute_name(:survey_response_uid) %></th>
+      <th scope="col"><%= GiftIssuePermission.human_attribute_name(:telephone) %></th>
+      <th scope="col"><%= GiftIssuePermission.human_attribute_name(:point) %></th>
+      <th scope="col"><%= GiftIssuePermission.human_attribute_name(:product_name) %></th>
+      <th scope="col"><%= GiftIssuePermission.human_attribute_name(:store_name) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @gift_issue_permissions.each do |gift_issue_permission| %>
+      <tr>
+        <th scope="row"><%= gift_issue_permission.id %></th>
+        <td><%= gift_issue_permission.survey_response_uid %></td>
+        <td><%= gift_issue_permission.telephone %></td>
+        <td><%= gift_issue_permission.point %></td>
+        <td><%= gift_issue_permission.product_name %></td>
+        <td><%= gift_issue_permission.store_name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

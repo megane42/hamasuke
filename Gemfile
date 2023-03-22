@@ -14,6 +14,7 @@ gem "bootstrap"
 gem 'mini_racer'
 gem "bootsnap", require: false
 gem "sidekiq"
+gem "rails-i18n"
 
 group :development do
   gem "annotate"

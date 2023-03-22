@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  resources :gift_issue_permissions, only: [:new] do
+  resources :gift_issue_permissions, only: [:new, :index] do
     collection { post :import }
   end
 end
