@@ -18,6 +18,5 @@
 #  fk_rails_...  (store_category_id => store_categories.id)
 #
 class Store < ApplicationRecord
-  has_many   :gift_issue_permissions
   belongs_to :store_category
 end
