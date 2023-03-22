@@ -19,6 +19,21 @@
 #  index_gift_issue_permissions_on_survey_response_uid  (survey_response_uid) UNIQUE
 #  index_gift_issue_permissions_on_telephone            (telephone)
 #
+require "csv"
+
 class GiftIssuePermission < ApplicationRecord
-  enum product_name: { air_conditioner: "エアコン", light: "LED照明", ecocute: "エコキュート", refrigerator: "電気冷蔵庫" }
+  enum product_name: { air_conditioner: "エアコン", light: "LED照明器具", ecocute: "エコキュート", refrigerator: "電気冷蔵庫" }
+
+  def self.import_csv!(csv_file)
+    attributes = CSV.foreach(csv_file.path, headers: true, encoding: "SJIS:UTF-8").map do |row|
+      {
+        point:               row["金額"],
+        product_name:        row["商品グループ"],
+        store_name:          row["購入店舗"],
+        survey_response_uid: row["public_uid"],
+        telephone:           row["携帯電話番号"],
+      }
+    end
+    insert_all!(attributes)
+  end
 end

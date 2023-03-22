@@ -1,0 +1,2 @@
+module GiftIssuePermissionsHelper
+end

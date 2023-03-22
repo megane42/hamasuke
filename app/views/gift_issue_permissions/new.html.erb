@@ -1,0 +1,13 @@
+<h1 class="py-5 fw-bold">ギフト発行対象インポート</h1>
+
+<%= form_with url: import_gift_issue_permissions_path, local: true do |f| %>
+  <div class="mb-4">
+    <%= f.label      :csv_file, "CSV ファイル", class: "form-label" %>
+    <%= f.file_field :csv_file, accept: "text/csv", class: "form-control" %>
+  </div>
+  <div class="mb-4">
+    <button type="submit" class="btn btn-primary">
+      インポート
+    </button>
+  </div>
+<% end %>

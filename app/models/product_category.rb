@@ -13,5 +13,5 @@
 #
 class ProductCategory < ApplicationRecord
   has_many :products
-  enum name: { air_conditioner: "エアコン", light: "LED照明", ecocute: "エコキュート", refrigerator: "電気冷蔵庫" }
+  enum name: { air_conditioner: "エアコン", light: "LED照明器具", ecocute: "エコキュート", refrigerator: "電気冷蔵庫" }
 end
