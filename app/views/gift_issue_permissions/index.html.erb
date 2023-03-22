@@ -7,7 +7,7 @@
       <th scope="col"><%= GiftIssuePermission.human_attribute_name(:survey_response_uid) %></th>
       <th scope="col"><%= GiftIssuePermission.human_attribute_name(:telephone) %></th>
       <th scope="col"><%= GiftIssuePermission.human_attribute_name(:point) %></th>
-      <th scope="col"><%= GiftIssuePermission.human_attribute_name(:product_name) %></th>
+      <th scope="col"><%= GiftIssuePermission.human_attribute_name(:product_category_name) %></th>
       <th scope="col"><%= GiftIssuePermission.human_attribute_name(:store_name) %></th>
     </tr>
   </thead>
@@ -18,7 +18,7 @@
         <td><%= gift_issue_permission.survey_response_uid %></td>
         <td><%= gift_issue_permission.telephone %></td>
         <td><%= gift_issue_permission.point %></td>
-        <td><%= gift_issue_permission.product_name %></td>
+        <td><%= gift_issue_permission.product_category_name %></td>
         <td><%= gift_issue_permission.store_name %></td>
       </tr>
     <% end %>

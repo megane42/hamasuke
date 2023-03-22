@@ -2,8 +2,8 @@ ja:
   activerecord:
     attributes:
       gift_issue_permission:
-        point: 金額
-        product_name: 商品
-        store_name: 店舗
+        point: ポイント額
+        product_category_name: 商品カテゴリ
+        store_name: 店舗名
         survey_response_uid: 回答 UID
         telephone: 携帯電話番号

@@ -15,12 +15,12 @@ ActiveRecord::Schema[7.1].define(version: 2023_03_20_095537) do
     t.string "survey_response_uid", null: false
     t.string "telephone", null: false
     t.integer "point", null: false
-    t.string "product_name", null: false
+    t.string "product_category_name", null: false
     t.string "store_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["point"], name: "index_gift_issue_permissions_on_point"
-    t.index ["product_name"], name: "index_gift_issue_permissions_on_product_name"
+    t.index ["product_category_name"], name: "index_gift_issue_permissions_on_product_category_name"
     t.index ["store_name"], name: "index_gift_issue_permissions_on_store_name"
     t.index ["survey_response_uid"], name: "index_gift_issue_permissions_on_survey_response_uid", unique: true
     t.index ["telephone"], name: "index_gift_issue_permissions_on_telephone"

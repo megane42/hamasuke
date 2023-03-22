@@ -8,7 +8,7 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-["エアコン", "LED照明", "エコキュート", "電気冷蔵庫"].each do |product_category_name|
+["エアコン", "LED照明器具", "エコキュート", "電気冷蔵庫"].each do |product_category_name|
   ProductCategory.find_or_create_by!(name: product_category_name)
 end
 
