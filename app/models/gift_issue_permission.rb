@@ -26,6 +26,7 @@ class GiftIssuePermission < ApplicationRecord
 
   has_one :gift
 
+  scope :issued,   -> { where.associated(:gift) }
   scope :unissued, -> { where.missing(:gift) }
 
   delegate :created_at,          to: :gift, prefix: true, allow_nil: true

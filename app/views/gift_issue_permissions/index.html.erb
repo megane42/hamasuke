@@ -17,6 +17,12 @@
   </div>
 </div>
 
+<nav class="nav nav-tabs">
+  <%= link_to "全件",   gift_issue_permissions_path,                    class: "nav-link #{@all_tab_active}"      %>
+  <%= link_to "未発行", gift_issue_permissions_path(scope: "unissued"), class: "nav-link #{@unissued_tab_active}" %>
+  <%= link_to "発行済", gift_issue_permissions_path(scope: "issued"),   class: "nav-link #{@issued_tab_active}"   %>
+</nav>
+
 <table class="table">
   <thead>
     <tr>
