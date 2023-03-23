@@ -3,7 +3,7 @@ class GiftIssuePermissionsController < ApplicationController
   end
 
   def index
-    @gift_issue_permissions = GiftIssuePermission.eager_load(:gift, :sms_sending).all
+    @gift_issue_permissions = GiftIssuePermission.eager_load(gift: :sms_sending).all
   end
 
   def import
@@ -12,7 +12,7 @@ class GiftIssuePermissionsController < ApplicationController
   end
 
   def issue
-    GiftIssuePermission.unissued.unsent.find_each do |gift_issue_permission|
+    GiftIssuePermission.unissued.find_each do |gift_issue_permission|
       IssueGiftAndSendSmsJob.perform_async(gift_issue_permission.id)
     end
     redirect_to gift_issue_permissions_url

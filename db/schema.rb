@@ -56,11 +56,11 @@ ActiveRecord::Schema[7.1].define(version: 2023_03_23_072042) do
   end
 
   create_table "sms_sendings", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "gift_issue_permission_id", null: false
+    t.bigint "gift_id", null: false
     t.datetime "sent_at", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["gift_issue_permission_id"], name: "index_sms_sendings_on_gift_issue_permission_id", unique: true
+    t.index ["gift_id"], name: "index_sms_sendings_on_gift_id", unique: true
     t.index ["sent_at"], name: "index_sms_sendings_on_sent_at"
   end
 
@@ -82,6 +82,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_03_23_072042) do
 
   add_foreign_key "gifts", "gift_issue_permissions"
   add_foreign_key "products", "product_categories"
-  add_foreign_key "sms_sendings", "gift_issue_permissions"
+  add_foreign_key "sms_sendings", "gifts"
   add_foreign_key "stores", "store_categories"
 end

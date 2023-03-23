@@ -23,6 +23,13 @@
 #
 class Gift < ApplicationRecord
   belongs_to :gift_issue_permission
+  has_one    :sms_sending, dependent: :destroy
+
+  delegate :telephone,             to: :gift_issue_permission
+  delegate :survey_response_uid,   to: :gift_issue_permission
+  delegate :product_category_name, to: :gift_issue_permission
+  delegate :store_name,            to: :gift_issue_permission
+  delegate :sent_at,               to: :sms_sending, prefix: true, allow_nil: true
 
   def self.issue!(gift_issue_permission:)
     return nil if gift_issue_permission.gift.present?
@@ -40,5 +47,9 @@ class Gift < ApplicationRecord
       expired_at:            giftee_box.expired_at,
       initial_point:         giftee_box.initial_point,
     )
+  end
+
+  def send_sms!
+    SmsSending.send_sms!(gift: self)
   end
 end

@@ -25,14 +25,12 @@ class GiftIssuePermission < ApplicationRecord
   enum product_category_name: { air_conditioner: "エアコン", light: "LED照明器具", ecocute: "エコキュート", refrigerator: "電気冷蔵庫" }
 
   has_one :gift
-  has_one :sms_sending
 
   scope :unissued, -> { where.missing(:gift) }
-  scope :unsent,   -> { where.missing(:sms_sending) }
 
-  delegate :url,        to: :gift,        prefix: true, allow_nil: true
-  delegate :created_at, to: :gift,        prefix: true, allow_nil: true
-  delegate :sent_at,    to: :sms_sending, prefix: true, allow_nil: true
+  delegate :created_at,          to: :gift, prefix: true, allow_nil: true
+  delegate :send_sms!,           to: :gift
+  delegate :sms_sending_sent_at, to: :gift, allow_nil: true
 
   def self.import_csv(csv_file)
     attributes = CSV.foreach(csv_file.path, headers: true, encoding: "SJIS:UTF-8").map do |row|
@@ -53,9 +51,5 @@ class GiftIssuePermission < ApplicationRecord
 
   def issue_gift!
     Gift.issue!(gift_issue_permission: self)
-  end
-
-  def send_sms!
-    SmsSending.send_sms!(gift_issue_permission: self)
   end
 end
