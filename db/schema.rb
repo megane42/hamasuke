@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_03_23_071025) do
+ActiveRecord::Schema[7.1].define(version: 2023_03_23_072042) do
   create_table "gift_issue_permissions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "survey_response_uid", null: false
     t.string "telephone", null: false
@@ -55,6 +55,15 @@ ActiveRecord::Schema[7.1].define(version: 2023_03_23_071025) do
     t.index ["product_category_id"], name: "index_products_on_product_category_id"
   end
 
+  create_table "sms_sendings", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "gift_issue_permission_id", null: false
+    t.datetime "sent_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gift_issue_permission_id"], name: "index_sms_sendings_on_gift_issue_permission_id", unique: true
+    t.index ["sent_at"], name: "index_sms_sendings_on_sent_at"
+  end
+
   create_table "store_categories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -73,5 +82,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_03_23_071025) do
 
   add_foreign_key "gifts", "gift_issue_permissions"
   add_foreign_key "products", "product_categories"
+  add_foreign_key "sms_sendings", "gift_issue_permissions"
   add_foreign_key "stores", "store_categories"
 end
