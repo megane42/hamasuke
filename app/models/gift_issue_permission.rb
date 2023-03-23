@@ -22,6 +22,8 @@
 require "csv"
 
 class GiftIssuePermission < ApplicationRecord
+  encrypts :telephone, deterministic: true
+
   enum product_category_name: { air_conditioner: "エアコン", light: "LED照明器具", ecocute: "エコキュート", refrigerator: "電気冷蔵庫" }
 
   has_one :gift
