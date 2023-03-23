@@ -34,6 +34,7 @@ class GiftIssuePermission < ApplicationRecord
   delegate :sms_sending_sent_at, to: :gift, allow_nil: true
 
   def self.import_csv(csv_file)
+    return if csv_file.nil?
     attributes = CSV.foreach(csv_file.path, headers: true, encoding: "SJIS:UTF-8").map do |row|
       {
         point:                 row["金額"],
