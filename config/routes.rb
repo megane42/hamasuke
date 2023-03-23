@@ -10,5 +10,6 @@ Rails.application.routes.draw do
 
   resources :gift_issue_permissions, only: [:new, :index] do
     collection { post :import }
+    collection { post :issue }
   end
 end

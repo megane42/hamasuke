@@ -27,6 +27,9 @@ class GiftIssuePermission < ApplicationRecord
   has_one :gift
   has_one :sms_sending
 
+  scope :unissued, -> { where.missing(:gift) }
+  scope :unsent,   -> { where.missing(:sms_sending) }
+
   def self.import_csv(csv_file)
     attributes = CSV.foreach(csv_file.path, headers: true, encoding: "SJIS:UTF-8").map do |row|
       {
@@ -38,5 +41,21 @@ class GiftIssuePermission < ApplicationRecord
       }
     end
     insert_all(attributes)
+  end
+
+  def issue_gift
+    if gift.blank?
+      build_gift.issue
+    else
+      gift
+    end
+  end
+
+  def send_sms
+    if sms_sending.blank?
+      build_sms_sending.send_sms
+    else
+      sms_sending
+    end
   end
 end

@@ -23,4 +23,12 @@
 #
 class Gift < ApplicationRecord
   belongs_to :gift_issue_permission
+
+  def issue
+    # request(issue_identity: gift_issue_permission.survey_response_uid)
+    self.url           = "https://example.com/#{SecureRandom.hex}"
+    self.expired_at    = "2023-01-01 12:34:56"
+    self.initial_point = gift_issue_permission.point
+    save
+  end
 end

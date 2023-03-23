@@ -19,4 +19,10 @@
 #
 class SmsSending < ApplicationRecord
   belongs_to :gift_issue_permission
+
+  def send_sms
+    # request(telno: gift_issue_permission.telephone)
+    self.sent_at = Time.zone.now
+    save
+  end
 end
