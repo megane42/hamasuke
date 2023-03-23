@@ -3,7 +3,7 @@ class GiftIssuePermissionsController < ApplicationController
   end
 
   def index
-    @gift_issue_permissions = GiftIssuePermission.all
+    @gift_issue_permissions = GiftIssuePermission.eager_load(:gift, :sms_sending).all
   end
 
   def import

@@ -26,6 +26,8 @@
       <th scope="col"><%= GiftIssuePermission.human_attribute_name(:point) %></th>
       <th scope="col"><%= GiftIssuePermission.human_attribute_name(:product_category_name) %></th>
       <th scope="col"><%= GiftIssuePermission.human_attribute_name(:store_name) %></th>
+      <th scope="col"><%= Gift.human_attribute_name(:created_at) %></th>
+      <th scope="col"><%= SmsSending.human_attribute_name(:sent_at) %></th>
     </tr>
   </thead>
   <tbody>
@@ -37,6 +39,8 @@
         <td><%= gift_issue_permission.point %></td>
         <td><%= gift_issue_permission.product_category_name %></td>
         <td><%= gift_issue_permission.store_name %></td>
+        <td><%= gift_issue_permission.gift_created_at %></td>
+        <td><%= gift_issue_permission.sms_sending_sent_at %></td>
       </tr>
     <% end %>
   </tbody>
