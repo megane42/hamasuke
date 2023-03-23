@@ -51,11 +51,11 @@ class GiftIssuePermission < ApplicationRecord
     self.class.product_category_names[super]
   end
 
-  def issue_gift
-    Gift.issue(gift_issue_permission: self)
+  def issue_gift!
+    Gift.issue!(gift_issue_permission: self)
   end
 
-  def send_sms
-    SmsSending.send_sms(gift_issue_permission: self)
+  def send_sms!
+    SmsSending.send_sms!(gift_issue_permission: self)
   end
 end

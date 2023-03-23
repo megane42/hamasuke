@@ -24,14 +24,14 @@
 class Gift < ApplicationRecord
   belongs_to :gift_issue_permission
 
-  def self.issue(gift_issue_permission:)
+  def self.issue!(gift_issue_permission:)
     return nil if gift_issue_permission.gift.present?
 
     client = Ikedayama::Client.new
     giftee_box = client.create_giftee_box(
       giftee_box_config_code: ENV["IKEDAYAMA_GIFTEE_BOX_CONFIG_CODE"],
       issue_identity: gift_issue_permission.survey_response_uid,
-      initial_point: gift_issue_permission.point,
+      initial_point:  gift_issue_permission.point,
     )
 
     self.create!(

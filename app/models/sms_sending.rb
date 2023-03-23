@@ -20,7 +20,7 @@
 class SmsSending < ApplicationRecord
   belongs_to :gift_issue_permission
 
-  def self.send_sms(gift_issue_permission:)
+  def self.send_sms!(gift_issue_permission:)
     return nil if gift_issue_permission.sms_sending.present?
 
     client = AccreteApiClient.new
