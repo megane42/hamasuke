@@ -25,10 +25,16 @@ class Gift < ApplicationRecord
   belongs_to :gift_issue_permission
 
   def issue
-    # request(issue_identity: gift_issue_permission.survey_response_uid)
-    self.url           = "https://example.com/#{SecureRandom.hex}"
-    self.expired_at    = "2023-01-01 12:34:56"
-    self.initial_point = gift_issue_permission.point
+    client = Ikedayama::Client.new
+    giftee_box = client.create_giftee_box(
+      giftee_box_config_code: ENV["IKEDAYAMA_GIFTEE_BOX_CONFIG_CODE"],
+      issue_identity: gift_issue_permission.survey_response_uid,
+      initial_point: gift_issue_permission.point,
+    )
+
+    self.url           = giftee_box.url
+    self.expired_at    = giftee_box.expired_at
+    self.initial_point = giftee_box.initial_point
     save
   end
 end
