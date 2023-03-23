@@ -16,6 +16,7 @@ gem "bootsnap", require: false
 gem "sidekiq"
 gem "rails-i18n"
 gem "ikedayama", git: "https://github.com/giftee/ikedayama-ruby.git"
+gem "faraday"
 
 group :development do
   gem "annotate"

@@ -30,6 +30,8 @@ class GiftIssuePermission < ApplicationRecord
   scope :unissued, -> { where.missing(:gift) }
   scope :unsent,   -> { where.missing(:sms_sending) }
 
+  delegate :url, to: :gift, prefix: true
+
   def self.import_csv(csv_file)
     attributes = CSV.foreach(csv_file.path, headers: true, encoding: "SJIS:UTF-8").map do |row|
       {

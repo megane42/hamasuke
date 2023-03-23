@@ -129,6 +129,10 @@ GEM
     error_highlight (0.5.1)
     erubi (1.12.0)
     execjs (2.8.1)
+    faraday (2.7.4)
+      faraday-net_http (>= 2.0, < 3.1)
+      ruby2_keywords (>= 0.0.4)
+    faraday-net_http (3.0.2)
     ffi (1.15.5)
     globalid (1.1.0)
       activesupport (>= 5.0)
@@ -200,6 +204,7 @@ GEM
       connection_pool
     reline (0.3.2)
       io-console (~> 0.5)
+    ruby2_keywords (0.0.5)
     sassc (2.4.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
@@ -252,6 +257,7 @@ DEPENDENCIES
   bootstrap
   dotenv-rails
   error_highlight (>= 0.4.0)
+  faraday
   ikedayama!
   importmap-rails
   mini_racer
