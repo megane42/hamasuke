@@ -20,17 +20,24 @@
 class SmsSending < ApplicationRecord
   belongs_to :gift_issue_permission
 
-  def send_sms
-    client = AccreteApiClient.new
-    client.send_short_message!(text: text, telno: gift_issue_permission.telephone)
+  def self.send_sms(gift_issue_permission:)
+    return nil if gift_issue_permission.sms_sending.present?
 
-    self.sent_at = Time.zone.now
-    save
+    client = AccreteApiClient.new
+    client.send_short_message!(
+      text:  text(gift_issue_permission: gift_issue_permission),
+      telno: gift_issue_permission.telephone
+    )
+
+    self.create!(
+      gift_issue_permission: gift_issue_permission,
+      sent_at:               Time.zone.now
+    )
   end
 
   private
 
-  def text
+  def self.text(gift_issue_permission:)
     <<~EOS
       この度は、福島省エネ家電購入応援キャンペーンにご応募いただきありがとうございます。
       申請内容の審査が完了しましたので、下記URLからキャッシュレスポイント受け取りの手続きを進めていただくようお願いいたします。

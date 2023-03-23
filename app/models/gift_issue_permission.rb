@@ -30,9 +30,9 @@ class GiftIssuePermission < ApplicationRecord
   scope :unissued, -> { where.missing(:gift) }
   scope :unsent,   -> { where.missing(:sms_sending) }
 
-  delegate :url,        to: :gift,        prefix: true
-  delegate :created_at, to: :gift,        prefix: true
-  delegate :sent_at,    to: :sms_sending, prefix: true
+  delegate :url,        to: :gift,        prefix: true, allow_nil: true
+  delegate :created_at, to: :gift,        prefix: true, allow_nil: true
+  delegate :sent_at,    to: :sms_sending, prefix: true, allow_nil: true
 
   def self.import_csv(csv_file)
     attributes = CSV.foreach(csv_file.path, headers: true, encoding: "SJIS:UTF-8").map do |row|
@@ -52,18 +52,10 @@ class GiftIssuePermission < ApplicationRecord
   end
 
   def issue_gift
-    if gift.blank?
-      build_gift.issue
-    else
-      gift
-    end
+    Gift.issue(gift_issue_permission: self)
   end
 
   def send_sms
-    if sms_sending.blank?
-      build_sms_sending.send_sms
-    else
-      sms_sending
-    end
+    SmsSending.send_sms(gift_issue_permission: self)
   end
 end
