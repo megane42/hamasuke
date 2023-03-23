@@ -16,6 +16,7 @@ ENV RAILS_ENV="production" \
 
 # Throw-away build stage to reduce size of final image
 FROM base as build
+ARG BUNDLE_GITHUB__COM
 
 # Install packages needed to build gems
 RUN apt-get update -qq && \
@@ -23,6 +24,7 @@ RUN apt-get update -qq && \
 
 # Install application gems
 COPY Gemfile Gemfile.lock ./
+RUN bundle config github.com $BUNDLE_GITHUB__COM
 RUN bundle install && \
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
     bundle exec bootsnap precompile --gemfile

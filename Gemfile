@@ -15,6 +15,7 @@ gem 'mini_racer'
 gem "bootsnap", require: false
 gem "sidekiq"
 gem "rails-i18n"
+gem "ikedayama", git: "https://github.com/giftee/ikedayama-ruby.git"
 
 group :development do
   gem "annotate"
