@@ -45,6 +45,10 @@ class GiftIssuePermission < ApplicationRecord
     insert_all(attributes)
   end
 
+  def product_category_name
+    self.class.product_category_names[super]
+  end
+
   def issue_gift
     if gift.blank?
       build_gift.issue
