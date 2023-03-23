@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  # root "articles#index"
+  root "gift_issue_permissions#index"
 
   resources :gift_issue_permissions, only: [:new, :index] do
     collection { post :import }
