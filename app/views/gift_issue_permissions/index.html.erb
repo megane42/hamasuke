@@ -1,11 +1,20 @@
 <h1 class="py-5 fw-bold">ギフト発行対象一覧</h1>
 
-<div class="mb-5">
-  <%= form_with url: issue_gift_issue_permissions_path do |f| %>
-    <button type="submit" class="btn btn-primary">
-      ギフト発行 & SMS 送信
-    </button>
-  <% end %>
+<div class="row mb-5">
+  <div class="col-auto">
+    <%= form_with url: issue_gift_issue_permissions_path do |f| %>
+      <button type="submit" class="btn btn-primary">
+        ギフト発行 & SMS 送信
+      </button>
+    <% end %>
+  </div>
+  <div class="col-auto">
+    <%= link_to new_gift_issue_permission_path do %>
+      <button type="button" class="btn btn-outline-secondary">
+        インポート
+      </button>
+    <% end %>
+  </div>
 </div>
 
 <table class="table">
