@@ -24,6 +24,8 @@ require "csv"
 class GiftIssuePermission < ApplicationRecord
   enum product_category_name: { air_conditioner: "エアコン", light: "LED照明器具", ecocute: "エコキュート", refrigerator: "電気冷蔵庫" }
 
+  has_one :gift
+
   def self.import_csv(csv_file)
     attributes = CSV.foreach(csv_file.path, headers: true, encoding: "SJIS:UTF-8").map do |row|
       {

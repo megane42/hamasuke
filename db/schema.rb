@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_03_20_095537) do
+ActiveRecord::Schema[7.1].define(version: 2023_03_23_071025) do
   create_table "gift_issue_permissions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "survey_response_uid", null: false
     t.string "telephone", null: false
@@ -24,6 +24,19 @@ ActiveRecord::Schema[7.1].define(version: 2023_03_20_095537) do
     t.index ["store_name"], name: "index_gift_issue_permissions_on_store_name"
     t.index ["survey_response_uid"], name: "index_gift_issue_permissions_on_survey_response_uid", unique: true
     t.index ["telephone"], name: "index_gift_issue_permissions_on_telephone"
+  end
+
+  create_table "gifts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "gift_issue_permission_id", null: false
+    t.string "url", null: false
+    t.integer "initial_point", null: false
+    t.datetime "expired_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["expired_at"], name: "index_gifts_on_expired_at"
+    t.index ["gift_issue_permission_id"], name: "index_gifts_on_gift_issue_permission_id", unique: true
+    t.index ["initial_point"], name: "index_gifts_on_initial_point"
+    t.index ["url"], name: "index_gifts_on_url", unique: true
   end
 
   create_table "product_categories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -58,6 +71,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_03_20_095537) do
     t.index ["store_category_id"], name: "index_stores_on_store_category_id"
   end
 
+  add_foreign_key "gifts", "gift_issue_permissions"
   add_foreign_key "products", "product_categories"
   add_foreign_key "stores", "store_categories"
 end
