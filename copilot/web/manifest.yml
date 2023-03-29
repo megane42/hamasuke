@@ -17,32 +17,60 @@ http:
 # Configuration for your containers and service.
 image:
   # Docker build arguments. For additional overrides: https://aws.github.io/copilot-cli/docs/manifest/lb-web-service/#image-build
-  build: Dockerfile
+  build:
+    dockerfile: Dockerfile
+    args:
+      BUNDLE_GITHUB__COM: ${BUNDLE_GITHUB__COM}
   # Port exposed through your container to route traffic to it.
   port: 3000
 
+entrypoint: "bundle exec rails s -p 3000 -b '0.0.0.0'"
+
 cpu: 256       # Number of CPU units for the task.
 memory: 512    # Amount of memory in MiB used by the task.
-platform: linux/x86_64  # See https://aws.github.io/copilot-cli/docs/manifest/lb-web-service/#platform
+platform: linux/arm64 # See https://aws.github.io/copilot-cli/docs/manifest/lb-web-service/#platform
 count: 1       # Number of tasks that should be running in your service.
 exec: true     # Enable running commands in your container.
 network:
-  connect: true # Enable Service Connect for intra-environment traffic between services.
+  vpc:
+    placement: private
+
+logging:
+  retention: 365
 
 # storage:
   # readonly_fs: true       # Limit to read-only access to mounted root filesystems.
- 
+
 # Optional fields for more advanced use-cases.
-#
-#variables:                    # Pass environment variables as key value pairs.
-#  LOG_LEVEL: info
+variables:
+  RACK_ENV: production
+  RAILS_ENV: production
+  RAILS_LOG_TO_STDOUT: true
+  RAILS_SERVE_STATIC_FILES: true
 
 #secrets:                      # Pass secrets from AWS Systems Manager (SSM) Parameter Store.
 #  GITHUB_TOKEN: GITHUB_TOKEN  # The key is the name of the environment variable, the value is the name of the SSM parameter.
 
 # You can override any of the values defined above by environment.
-#environments:
-#  test:
-#    count: 2               # Number of tasks to run for the "test" environment.
-#    deployment:            # The deployment strategy for the "test" environment.
-#       rolling: 'recreate' # Stops existing tasks before new ones are started for faster deployments.
+environments:
+  staging:
+    secrets:
+      FUKUSUKE_DATABASE_HOST: /copilot/fukusuke/staging/secrets/FUKUSUKE_DATABASE_HOST
+      FUKUSUKE_DATABASE_USERNAME: /copilot/fukusuke/staging/secrets/FUKUSUKE_DATABASE_USERNAME
+      FUKUSUKE_DATABASE_PASSWORD: /copilot/fukusuke/staging/secrets/FUKUSUKE_DATABASE_PASSWORD
+      IKEDAYAMA_API_ENDPOINT: /copilot/fukusuke/staging/secrets/IKEDAYAMA_API_ENDPOINT
+      IKEDAYAMA_ACCESS_TOKEN: /copilot/fukusuke/staging/secrets/IKEDAYAMA_ACCESS_TOKEN
+      IKEDAYAMA_GIFTEE_BOX_CONFIG_CODE: /copilot/fukusuke/staging/secrets/IKEDAYAMA_GIFTEE_BOX_CONFIG_CODE
+      ACCRETE_API_ACCOUNT_ID: /copilot/fukusuke/staging/secrets/ACCRETE_API_ACCOUNT_ID
+      ACCRETE_API_PASSWORD: /copilot/fukusuke/staging/secrets/ACCRETE_API_PASSWORD
+      ACCRETE_API_REQUEST_ID: /copilot/fukusuke/staging/secrets/ACCRETE_API_REQUEST_ID
+      REDIS_URL: /copilot/fukusuke/staging/secrets/REDIS_URL
+      RAILS_MASTER_KEY: /copilot/fukusuke/staging/secrets/RAILS_MASTER_KEY
+      RAILS_ENC_PRIMARY_KEY: /copilot/fukusuke/staging/secrets/RAILS_ENC_PRIMARY_KEY
+      RAILS_ENC_DETERMINISTIC_KEY: /copilot/fukusuke/staging/secrets/RAILS_ENC_DETERMINISTIC_KEY
+      RAILS_ENC_KEY_DERIVATION_SALT: /copilot/fukusuke/staging/secrets/RAILS_ENC_KEY_DERIVATION_SALT
+    network:
+      vpc:
+        security_groups:
+          - sg-048075bab6ab266c2 # security_group_rds_fukusuke_staging
+          - sg-0b8795b7fface8d65 # security_group_elasticache_fukusuke_staging
