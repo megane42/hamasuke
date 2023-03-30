@@ -17,6 +17,8 @@ gem "sidekiq"
 gem "rails-i18n"
 gem "ikedayama", git: "https://github.com/giftee/ikedayama-ruby.git"
 gem "faraday"
+gem "kaminari"
+gem "bootstrap5-kaminari-views"
 
 group :development do
   gem "annotate"

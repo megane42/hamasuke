@@ -3,15 +3,16 @@ class GiftIssuePermissionsController < ApplicationController
   end
 
   def index
+    list = GiftIssuePermission.eager_load(gift: :sms_sending).order(id: :desc).page(params[:page])
     case params[:scope]
     when "issued"
-      @gift_issue_permissions = GiftIssuePermission.eager_load(gift: :sms_sending).order(id: :desc).issued
+      @gift_issue_permissions = list.issued
       @issued_tab_active = "active"
     when "unissued"
-      @gift_issue_permissions = GiftIssuePermission.eager_load(gift: :sms_sending).order(id: :desc).unissued
+      @gift_issue_permissions = list.unissued
       @unissued_tab_active = "active"
     else
-      @gift_issue_permissions = GiftIssuePermission.eager_load(gift: :sms_sending).order(id: :desc).all
+      @gift_issue_permissions = list.all
       @all_tab_active = "active"
     end
   end

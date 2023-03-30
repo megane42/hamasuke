@@ -23,31 +23,37 @@
   <%= link_to "発行済", gift_issue_permissions_path(scope: "issued"),   class: "nav-link #{@issued_tab_active}"   %>
 </nav>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col"><%= GiftIssuePermission.human_attribute_name(:survey_response_uid) %></th>
-      <th scope="col"><%= GiftIssuePermission.human_attribute_name(:telephone) %></th>
-      <th scope="col"><%= GiftIssuePermission.human_attribute_name(:point) %></th>
-      <th scope="col"><%= GiftIssuePermission.human_attribute_name(:product_category_name) %></th>
-      <th scope="col"><%= GiftIssuePermission.human_attribute_name(:store_name) %></th>
-      <th scope="col"><%= Gift.human_attribute_name(:created_at) %></th>
-      <th scope="col"><%= SmsSending.human_attribute_name(:sent_at) %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @gift_issue_permissions.each do |gift_issue_permission| %>
+<div class="row mb-3">
+  <table class="table">
+    <thead>
       <tr>
-        <th scope="row"><%= gift_issue_permission.id %></th>
-        <td><%= gift_issue_permission.survey_response_uid %></td>
-        <td><%= gift_issue_permission.telephone %></td>
-        <td><%= gift_issue_permission.point %></td>
-        <td><%= gift_issue_permission.product_category_name %></td>
-        <td><%= gift_issue_permission.store_name %></td>
-        <td><%= gift_issue_permission.gift_created_at&.strftime("%F %T") %></td>
-        <td><%= gift_issue_permission.sms_sending_sent_at&.strftime("%F %T") %></td>
+        <th scope="col">#</th>
+        <th scope="col"><%= GiftIssuePermission.human_attribute_name(:survey_response_uid) %></th>
+        <th scope="col"><%= GiftIssuePermission.human_attribute_name(:telephone) %></th>
+        <th scope="col"><%= GiftIssuePermission.human_attribute_name(:point) %></th>
+        <th scope="col"><%= GiftIssuePermission.human_attribute_name(:product_category_name) %></th>
+        <th scope="col"><%= GiftIssuePermission.human_attribute_name(:store_name) %></th>
+        <th scope="col"><%= Gift.human_attribute_name(:created_at) %></th>
+        <th scope="col"><%= SmsSending.human_attribute_name(:sent_at) %></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @gift_issue_permissions.each do |gift_issue_permission| %>
+        <tr>
+          <th scope="row"><%= gift_issue_permission.id %></th>
+          <td><%= gift_issue_permission.survey_response_uid %></td>
+          <td><%= gift_issue_permission.telephone %></td>
+          <td><%= gift_issue_permission.point %></td>
+          <td><%= gift_issue_permission.product_category_name %></td>
+          <td><%= gift_issue_permission.store_name %></td>
+          <td><%= gift_issue_permission.gift_created_at&.strftime("%F %T") %></td>
+          <td><%= gift_issue_permission.sms_sending_sent_at&.strftime("%F %T") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="row mb-5">
+  <%= paginate @gift_issue_permissions, theme: "bootstrap-5" %>
+</div>

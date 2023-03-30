@@ -117,6 +117,9 @@ GEM
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 2.11.6, < 3)
       sassc-rails (>= 2.0.0)
+    bootstrap5-kaminari-views (0.0.1)
+      kaminari (>= 0.13)
+      rails (>= 3.1)
     builder (3.2.4)
     concurrent-ruby (1.2.2)
     connection_pool (2.3.0)
@@ -147,6 +150,18 @@ GEM
     io-console (0.6.0)
     irb (1.6.3)
       reline (>= 0.3.0)
+    kaminari (1.2.2)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.2.2)
+      kaminari-activerecord (= 1.2.2)
+      kaminari-core (= 1.2.2)
+    kaminari-actionview (1.2.2)
+      actionview
+      kaminari-core (= 1.2.2)
+    kaminari-activerecord (1.2.2)
+      activerecord
+      kaminari-core (= 1.2.2)
+    kaminari-core (1.2.2)
     libv8-node (16.10.0.0-aarch64-linux)
     libv8-node (16.10.0.0-arm64-darwin)
     loofah (2.19.1)
@@ -255,11 +270,13 @@ DEPENDENCIES
   annotate
   bootsnap
   bootstrap
+  bootstrap5-kaminari-views
   dotenv-rails
   error_highlight (>= 0.4.0)
   faraday
   ikedayama!
   importmap-rails
+  kaminari
   mini_racer
   mysql2
   puma
