@@ -66,3 +66,24 @@ environments:
         security_groups:
           - sg-048075bab6ab266c2 # security_group_rds_fukusuke_staging
           - sg-0b8795b7fface8d65 # security_group_elasticache_fukusuke_staging
+  production:
+    secrets:
+      FUKUSUKE_DATABASE_HOST: /copilot/fukusuke/production/secrets/FUKUSUKE_DATABASE_HOST
+      FUKUSUKE_DATABASE_USERNAME: /copilot/fukusuke/production/secrets/FUKUSUKE_DATABASE_USERNAME
+      FUKUSUKE_DATABASE_PASSWORD: /copilot/fukusuke/production/secrets/FUKUSUKE_DATABASE_PASSWORD
+      IKEDAYAMA_API_ENDPOINT: /copilot/fukusuke/production/secrets/IKEDAYAMA_API_ENDPOINT
+      IKEDAYAMA_ACCESS_TOKEN: /copilot/fukusuke/production/secrets/IKEDAYAMA_ACCESS_TOKEN
+      IKEDAYAMA_GIFTEE_BOX_CONFIG_CODE: /copilot/fukusuke/production/secrets/IKEDAYAMA_GIFTEE_BOX_CONFIG_CODE
+      ACCRETE_API_ACCOUNT_ID: /copilot/fukusuke/production/secrets/ACCRETE_API_ACCOUNT_ID
+      ACCRETE_API_PASSWORD: /copilot/fukusuke/production/secrets/ACCRETE_API_PASSWORD
+      ACCRETE_API_REQUEST_ID: /copilot/fukusuke/production/secrets/ACCRETE_API_REQUEST_ID
+      REDIS_URL: /copilot/fukusuke/production/secrets/REDIS_URL
+      RAILS_MASTER_KEY: /copilot/fukusuke/production/secrets/RAILS_MASTER_KEY
+      RAILS_ENC_PRIMARY_KEY: /copilot/fukusuke/production/secrets/RAILS_ENC_PRIMARY_KEY
+      RAILS_ENC_DETERMINISTIC_KEY: /copilot/fukusuke/production/secrets/RAILS_ENC_DETERMINISTIC_KEY
+      RAILS_ENC_KEY_DERIVATION_SALT: /copilot/fukusuke/production/secrets/RAILS_ENC_KEY_DERIVATION_SALT
+    network:
+      vpc:
+        security_groups:
+          - sg-0a5251cb4737e63d8 # security_group_rds_fukusuke_production
+          - sg-0a5ddf2f7951281fb # security_group_elasticache_fukusuke_production
