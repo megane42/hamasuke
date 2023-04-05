@@ -1,19 +1,21 @@
 <h1 class="py-5 fw-bold">ダッシュボード</h1>
 
 <div class="row mb-5">
-  <div class="col-6">
-    <div class="card border-0">
+  <div class="col">
+    <div class="card border-0" data-controller="dashboard--count-up">
       <div class="card-body">
         <h5 class="card-title text-center">ギフト発行数</h5>
-        <p class="card-text text-center fw-bold dashboard-kpi"><%= @count_gift %></p>
+        <p class="card-text text-center fw-bold display-huge" data-dashboard--count-up-target="countValue"><%= @count_gift %></p>
       </div>
     </div>
   </div>
-  <div class="col-6">
-    <div class="card border-0">
+</div>
+<div class="row mb-5">
+  <div class="col">
+    <div class="card border-0" data-controller="dashboard--count-up">
       <div class="card-body">
         <h5 class="card-title text-center">総交付金額</h5>
-        <p class="card-text text-center fw-bold dashboard-kpi"><%= @sum_point %></p>
+        <p class="card-text text-center fw-bold display-huge" data-dashboard--count-up-target="countValue"><%= @sum_point %></p>
       </div>
     </div>
   </div>

@@ -13,6 +13,13 @@
 
 $primary: #198754;
 
+@import "bootstrap/functions";
+@import "bootstrap/variables";
+
+$display-font-sizes: map-merge($display-font-sizes, (
+    huge: 7.5rem
+));
+
 @import "bootstrap";
 
 body {
