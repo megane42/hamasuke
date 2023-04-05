@@ -32,6 +32,7 @@ class GiftIssuePermission < ApplicationRecord
   scope :unissued, -> { where.missing(:gift) }
 
   delegate :created_at,          to: :gift, prefix: true, allow_nil: true
+  delegate :url,                 to: :gift, prefix: true, allow_nil: true
   delegate :send_sms!,           to: :gift
   delegate :sms_sending_sent_at, to: :gift, allow_nil: true
 

@@ -7,7 +7,6 @@ ja:
         store_name: 店舗名
         survey_response_uid: 回答 UID
         telephone: 携帯電話番号
-      gift:
-        created_at: ギフト発行時刻
-      sms_sending:
-        sent_at: SMS送信時刻
+        gift_url: ギフト URL
+        gift_created_at: ギフト発行時刻
+        sms_sending_sent_at: SMS送信時刻

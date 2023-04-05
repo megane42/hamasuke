@@ -23,8 +23,8 @@
   <%= link_to "発行済", gift_issue_permissions_path(scope: "issued"),   class: "nav-link #{@issued_tab_active}"   %>
 </nav>
 
-<div class="row mb-3">
-  <table class="table">
+<div class="row mb-3 table-responsive">
+  <table class="table text-nowrap">
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -33,8 +33,9 @@
         <th scope="col"><%= GiftIssuePermission.human_attribute_name(:point) %></th>
         <th scope="col"><%= GiftIssuePermission.human_attribute_name(:product_category_name) %></th>
         <th scope="col"><%= GiftIssuePermission.human_attribute_name(:store_name) %></th>
-        <th scope="col"><%= Gift.human_attribute_name(:created_at) %></th>
-        <th scope="col"><%= SmsSending.human_attribute_name(:sent_at) %></th>
+        <th scope="col"><%= GiftIssuePermission.human_attribute_name(:gift_url) %></th>
+        <th scope="col"><%= GiftIssuePermission.human_attribute_name(:gift_created_at) %></th>
+        <th scope="col"><%= GiftIssuePermission.human_attribute_name(:sms_sending_sent_at) %></th>
       </tr>
     </thead>
     <tbody>
@@ -46,6 +47,7 @@
           <td><%= gift_issue_permission.point %></td>
           <td><%= gift_issue_permission.product_category_name %></td>
           <td><%= gift_issue_permission.store_name %></td>
+          <td><%= gift_issue_permission.gift_url %></td>
           <td><%= gift_issue_permission.gift_created_at&.strftime("%F %T") %></td>
           <td><%= gift_issue_permission.sms_sending_sent_at&.strftime("%F %T") %></td>
         </tr>
