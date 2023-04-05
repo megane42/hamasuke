@@ -41,4 +41,4 @@
 .irb_history
 .DS_Store
 .env
-.terraform
+terraform
