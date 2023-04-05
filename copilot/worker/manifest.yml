@@ -50,6 +50,8 @@ environments:
       FUKUSUKE_DATABASE_HOST: /copilot/fukusuke/staging/secrets/FUKUSUKE_DATABASE_HOST
       FUKUSUKE_DATABASE_USERNAME: /copilot/fukusuke/staging/secrets/FUKUSUKE_DATABASE_USERNAME
       FUKUSUKE_DATABASE_PASSWORD: /copilot/fukusuke/staging/secrets/FUKUSUKE_DATABASE_PASSWORD
+      FUKUSUKE_BASIC_AUTH_ID: /copilot/fukusuke/staging/secrets/FUKUSUKE_BASIC_AUTH_ID
+      FUKUSUKE_BASIC_AUTH_PW: /copilot/fukusuke/staging/secrets/FUKUSUKE_BASIC_AUTH_PW
       IKEDAYAMA_API_ENDPOINT: /copilot/fukusuke/staging/secrets/IKEDAYAMA_API_ENDPOINT
       IKEDAYAMA_ACCESS_TOKEN: /copilot/fukusuke/staging/secrets/IKEDAYAMA_ACCESS_TOKEN
       IKEDAYAMA_GIFTEE_BOX_CONFIG_CODE: /copilot/fukusuke/staging/secrets/IKEDAYAMA_GIFTEE_BOX_CONFIG_CODE
@@ -71,6 +73,8 @@ environments:
       FUKUSUKE_DATABASE_HOST: /copilot/fukusuke/production/secrets/FUKUSUKE_DATABASE_HOST
       FUKUSUKE_DATABASE_USERNAME: /copilot/fukusuke/production/secrets/FUKUSUKE_DATABASE_USERNAME
       FUKUSUKE_DATABASE_PASSWORD: /copilot/fukusuke/production/secrets/FUKUSUKE_DATABASE_PASSWORD
+      FUKUSUKE_BASIC_AUTH_ID: /copilot/fukusuke/production/secrets/FUKUSUKE_BASIC_AUTH_ID
+      FUKUSUKE_BASIC_AUTH_PW: /copilot/fukusuke/production/secrets/FUKUSUKE_BASIC_AUTH_PW
       IKEDAYAMA_API_ENDPOINT: /copilot/fukusuke/production/secrets/IKEDAYAMA_API_ENDPOINT
       IKEDAYAMA_ACCESS_TOKEN: /copilot/fukusuke/production/secrets/IKEDAYAMA_ACCESS_TOKEN
       IKEDAYAMA_GIFTEE_BOX_CONFIG_CODE: /copilot/fukusuke/production/secrets/IKEDAYAMA_GIFTEE_BOX_CONFIG_CODE
