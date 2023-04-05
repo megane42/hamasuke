@@ -11,9 +11,22 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-light bg-white">
+    <nav class="navbar navbar-expand-md navbar-light bg-white">
       <div class="container-fluid">
-        <a class="navbar-brand fw-bold logo" href="#">福助</a>
+        <a class="navbar-brand fw-bold logo pt-0" href="/">福助</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContents">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarContents">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <%= link_to "ギフト発行対象一覧", gift_issue_permissions_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ダッシュボード", dashboard_path, class: "nav-link" %>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
     <main class="container">
