@@ -39,22 +39,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_03_23_072042) do
     t.index ["url"], name: "index_gifts_on_url", unique: true
   end
 
-  create_table "product_categories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_product_categories_on_name", unique: true
-  end
-
-  create_table "products", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name", null: false
-    t.bigint "product_category_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_products_on_name", unique: true
-    t.index ["product_category_id"], name: "index_products_on_product_category_id"
-  end
-
   create_table "sms_sendings", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "gift_id", null: false
     t.datetime "sent_at", null: false
@@ -64,24 +48,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_03_23_072042) do
     t.index ["sent_at"], name: "index_sms_sendings_on_sent_at"
   end
 
-  create_table "store_categories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_store_categories_on_name", unique: true
-  end
-
-  create_table "stores", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name", null: false
-    t.bigint "store_category_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_stores_on_name", unique: true
-    t.index ["store_category_id"], name: "index_stores_on_store_category_id"
-  end
-
   add_foreign_key "gifts", "gift_issue_permissions"
-  add_foreign_key "products", "product_categories"
   add_foreign_key "sms_sendings", "gifts"
-  add_foreign_key "stores", "store_categories"
 end
