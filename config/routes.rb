@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "gift_issue_permissions#index"
 
+  resource :dashboard, only: [:show]
   resources :gift_issue_permissions, only: [:new, :index] do
     collection { post :import }
     collection { post :issue }
