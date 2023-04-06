@@ -1,4 +1,5 @@
-require 'sidekiq/web'
+require "sidekiq/web"
+require "sidekiq/throttled/web"
 
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -15,6 +16,9 @@ Rails.application.routes.draw do
     collection { post :import }
     collection { post :issue }
   end
+
+  # Replace Sidekiq Queues with enhanced version!
+  Sidekiq::Throttled::Web.enhance_queues_tab!
 
   mount Sidekiq::Web => "/sidekiq"
 end

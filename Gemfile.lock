@@ -198,14 +198,14 @@ GEM
     puma (6.1.1)
       nio4r (~> 2.0)
     racc (1.6.2)
-    rack (3.0.7)
-    rack-session (2.0.0)
-      rack (>= 3.0.0)
+    rack (2.2.6.4)
+    rack-session (1.0.1)
+      rack (< 3)
     rack-test (2.1.0)
       rack (>= 1.3)
-    rackup (2.1.0)
-      rack (>= 3)
-      webrick (~> 1.8)
+    rackup (1.0.0)
+      rack (< 3)
+      webrick
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -215,8 +215,8 @@ GEM
       i18n (>= 0.7, < 2)
       railties (>= 6.0.0, < 8)
     rake (13.0.6)
-    redis-client (0.14.0)
-      connection_pool
+    redis (4.8.1)
+    redis-prescription (1.0.0)
     reline (0.3.2)
       io-console (~> 0.5)
     ruby2_keywords (0.0.5)
@@ -228,11 +228,14 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    sidekiq (7.0.7)
-      concurrent-ruby (< 2)
-      connection_pool (>= 2.3.0)
-      rack (>= 2.2.4)
-      redis-client (>= 0.11.0)
+    sidekiq (6.5.8)
+      connection_pool (>= 2.2.5, < 3)
+      rack (~> 2.0)
+      redis (>= 4.5.0, < 5)
+    sidekiq-throttled (0.17.0)
+      concurrent-ruby
+      redis-prescription
+      sidekiq (>= 6.4)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -282,7 +285,9 @@ DEPENDENCIES
   puma
   rails!
   rails-i18n
-  sidekiq
+  redis-prescription (~> 1.0.0)
+  sidekiq (~> 6.5.0)
+  sidekiq-throttled
   sprockets-rails
   stimulus-rails
   turbo-rails
