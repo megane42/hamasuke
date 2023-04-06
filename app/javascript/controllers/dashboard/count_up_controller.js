@@ -6,7 +6,7 @@ export default class extends Controller {
   static targets = [ "countValue" ]
 
   connect() {
-    const countUp = new CountUp(this.countValueTarget, this.countValueTarget.innerText, { duration: 1.5 });
+    const countUp = new CountUp(this.countValueTarget, this.countValueTarget.innerText, { duration: 1.5, enableScrollSpy: true, scrollSpyOnce: true });
     countUp.start();
   }
 }
