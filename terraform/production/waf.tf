@@ -48,7 +48,7 @@ resource "aws_wafv2_web_acl" "this" {
 }
 
 resource "aws_wafv2_web_acl_association" "this" {
-  resource_arn = "arn:aws:elasticloadbalancing:XXXXXXXXXXXXXXXXX" # copilot で作った ALB (prd) の ARN
+  resource_arn = "arn:aws:elasticloadbalancing:ap-northeast-1:368771686176:loadbalancer/app/fukus-Publi-13JKCQD9NR37Y/5fdc1bcc766aed9b" # copilot で作った ALB (prd) の ARN
   web_acl_arn  = aws_wafv2_web_acl.this.arn
 }
 
