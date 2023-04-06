@@ -76,6 +76,9 @@ environments:
         security_groups:
           - sg-048075bab6ab266c2 # security_group_rds_fukusuke_staging
           - sg-0b8795b7fface8d65 # security_group_elasticache_fukusuke_staging
+    http:
+      alias: stg.fukusuke.giftee.biz
+
   production:
     secrets:
       FUKUSUKE_DATABASE_HOST: /copilot/fukusuke/production/secrets/FUKUSUKE_DATABASE_HOST
@@ -99,3 +102,5 @@ environments:
         security_groups:
           - sg-0a5251cb4737e63d8 # security_group_rds_fukusuke_production
           - sg-0a5ddf2f7951281fb # security_group_elasticache_fukusuke_production
+    http:
+      alias: fukusuke.giftee.biz
