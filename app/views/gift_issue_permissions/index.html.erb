@@ -17,11 +17,29 @@
   </div>
 </div>
 
-<nav class="nav nav-tabs">
-  <%= link_to "全件",   gift_issue_permissions_path,                    class: "nav-link #{@all_tab_active}"      %>
-  <%= link_to "未発行", gift_issue_permissions_path(scope: "unissued"), class: "nav-link #{@unissued_tab_active}" %>
-  <%= link_to "発行済", gift_issue_permissions_path(scope: "issued"),   class: "nav-link #{@issued_tab_active}"   %>
-</nav>
+<div class="row mb-5">
+  <%= search_form_for @q do |f| %>
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <%= f.label        :survey_response_uid_cont, class: "form-label" %>
+        <%= f.search_field :survey_response_uid_cont, class: "form-control" %>
+      </div>
+      <div class="col-md-4">
+        <%= f.label        :telephone_eq, class: "form-label" %>
+        <%= f.search_field :telephone_eq, class: "form-control" %>
+      </div>
+      <div class="col-md-4">
+        <%= f.label  :ransack_gift_issued, "ギフト発行状況", class: "form-label" %>
+        <%= f.select :ransack_gift_issued, options_for_select([["すべて", "all"], ["発行済", "issued"], ["未発行", "unissued"]]), {}, class: "form-select" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <button class="w-100 btn btn-outline-secondary" type="submit">検索</button>
+      </div>
+    </div>
+  <% end %>
+</div>
 
 <div class="row mb-3 table-responsive">
   <table class="table text-nowrap">

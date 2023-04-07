@@ -36,6 +36,29 @@ class GiftIssuePermission < ApplicationRecord
   delegate :send_sms!,           to: :gift
   delegate :sms_sending_sent_at, to: :gift, allow_nil: true
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["survey_response_uid", "telephone"]
+  end
+
+  def self.ransackable_scopes(auth_object = nil)
+    ["ransack_gift_issued"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["gift"]
+  end
+
+  scope :ransack_gift_issued, -> (keyword) {
+    case keyword
+    when "issued"
+      issued
+    when "unissued"
+      unissued
+    else
+      all
+    end
+  }
+
   def self.import_csv(csv_file)
     return if csv_file.nil?
     attributes = CSV.foreach(csv_file.path, headers: true, encoding: "SJIS:UTF-8").map do |row|

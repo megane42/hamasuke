@@ -13,12 +13,14 @@ gem "stimulus-rails"
 gem "bootstrap"
 gem 'mini_racer'
 gem "bootsnap", require: false
+
 gem "sidekiq", "~> 6.5.0"
 gem "sidekiq-throttled"
 gem "redis-prescription", "~> 1.0.0"
 gem "rails-i18n"
 gem "ikedayama", git: "https://github.com/giftee/ikedayama-ruby.git"
 gem "faraday"
+gem "ransack"
 gem "kaminari"
 gem "bootstrap5-kaminari-views"
 
