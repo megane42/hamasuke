@@ -60,4 +60,10 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  # factory bot を使いやすくする
+  config.include FactoryBot::Syntax::Methods
+
+  # focus で特定のテストケースだけ実行できるようにする
+  config.filter_run_when_matching :focus
 end
