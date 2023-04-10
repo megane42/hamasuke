@@ -27,33 +27,49 @@ class GiftIssuePermission < ApplicationRecord
   enum product_category_name: { air_conditioner: "エアコン", light: "LED照明器具", ecocute: "エコキュート", refrigerator: "電気冷蔵庫" }
 
   has_one :gift
+  has_one :sms_sending, through: :gift
 
-  scope :issued,   -> { where.associated(:gift) }
-  scope :unissued, -> { where.missing(:gift) }
+  scope :gift_issued,   -> { where.associated :gift }
+  scope :gift_unissued, -> { where.missing    :gift }
+  scope :sms_sent,      -> { where.associated :sms_sending }
+  scope :sms_unsent,    -> { where.missing    :sms_sending }
+  scope :completed,     -> { sms_sent }
+  scope :uncompleted,   -> { sms_unsent }
 
-  delegate :created_at,          to: :gift, prefix: true, allow_nil: true
-  delegate :url,                 to: :gift, prefix: true, allow_nil: true
-  delegate :send_sms!,           to: :gift
-  delegate :sms_sending_sent_at, to: :gift, allow_nil: true
+  delegate :created_at, to: :gift, prefix: true, allow_nil: true
+  delegate :url,        to: :gift, prefix: true, allow_nil: true
+  delegate :send_sms!,  to: :gift
+  delegate :sent_at,    to: :sms_sending, prefix: true, allow_nil: true
 
   def self.ransackable_attributes(auth_object = nil)
     ["survey_response_uid", "telephone"]
   end
 
   def self.ransackable_scopes(auth_object = nil)
-    ["ransack_gift_issued"]
+    ["ransack_gift_issued", "ransack_sms_sent"]
   end
 
   def self.ransackable_associations(auth_object = nil)
-    ["gift"]
+    ["gift", "sms_sending"]
   end
 
   scope :ransack_gift_issued, -> (keyword) {
     case keyword
-    when "issued"
-      issued
-    when "unissued"
-      unissued
+    when "gift_issued"
+      gift_issued
+    when "gift_unissued"
+      gift_unissued
+    else
+      all
+    end
+  }
+
+  scope :ransack_sms_sent, -> (keyword) {
+    case keyword
+    when "sms_sent"
+      sms_sent
+    when "sms_unsent"
+      sms_unsent
     else
       all
     end

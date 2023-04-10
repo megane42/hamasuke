@@ -20,17 +20,21 @@
 <div class="row mb-5">
   <%= search_form_for @q do |f| %>
     <div class="row mb-3">
-      <div class="col-md-4">
+      <div class="col-md-3">
         <%= f.label        :survey_response_uid_cont, class: "form-label" %>
         <%= f.search_field :survey_response_uid_cont, class: "form-control" %>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-3">
         <%= f.label        :telephone_eq, class: "form-label" %>
         <%= f.search_field :telephone_eq, class: "form-control" %>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-3">
         <%= f.label  :ransack_gift_issued, "ギフト発行状況", class: "form-label" %>
-        <%= f.select :ransack_gift_issued, options_for_select([["すべて", "all"], ["発行済", "issued"], ["未発行", "unissued"]]), {}, class: "form-select" %>
+        <%= f.select :ransack_gift_issued, options_for_select([["すべて", "all"], ["発行済", "gift_issued"], ["未発行", "gift_unissued"]]), {}, class: "form-select" %>
+      </div>
+      <div class="col-md-3">
+        <%= f.label  :ransack_sms_sent, "SMS 送信状況", class: "form-label" %>
+        <%= f.select :ransack_sms_sent, options_for_select([["すべて", "all"], ["送信済", "sms_sent"], ["未送信", "sms_unsent"]]), {}, class: "form-select" %>
       </div>
     </div>
     <div class="row">

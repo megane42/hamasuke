@@ -14,7 +14,7 @@ class GiftIssuePermissionsController < ApplicationController
   end
 
   def issue
-    GiftIssuePermission.unissued.find_each do |gift_issue_permission|
+    GiftIssuePermission.uncompleted.find_each do |gift_issue_permission|
       IssueGiftAndSendSmsJob.perform_async(gift_issue_permission.id)
     end
     flash[:success] = "ギフト発行処理を開始しました。少し待ってからリロードしてください。"
