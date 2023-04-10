@@ -29,12 +29,14 @@
         <%= f.search_field :telephone_eq, class: "form-control" %>
       </div>
       <div class="col-md-3">
+        <% selected = params.dig("q", "ransack_gift_issued") %>
         <%= f.label  :ransack_gift_issued, "ギフト発行状況", class: "form-label" %>
-        <%= f.select :ransack_gift_issued, options_for_select([["すべて", "all"], ["発行済", "gift_issued"], ["未発行", "gift_unissued"]]), {}, class: "form-select" %>
+        <%= f.select :ransack_gift_issued, options_for_select([["すべて", "all"], ["発行済", "gift_issued"], ["未発行", "gift_unissued"]], selected), {}, class: "form-select" %>
       </div>
       <div class="col-md-3">
+        <% selected = params.dig("q", "ransack_sms_sent") %>
         <%= f.label  :ransack_sms_sent, "SMS 送信状況", class: "form-label" %>
-        <%= f.select :ransack_sms_sent, options_for_select([["すべて", "all"], ["送信済", "sms_sent"], ["未送信", "sms_unsent"]]), {}, class: "form-select" %>
+        <%= f.select :ransack_sms_sent, options_for_select([["すべて", "all"], ["送信済", "sms_sent"], ["未送信", "sms_unsent"]], selected), {}, class: "form-select" %>
       </div>
     </div>
     <div class="row">
