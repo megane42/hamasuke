@@ -30,3 +30,8 @@ group :development do
   gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
   gem "dotenv-rails"
 end
+
+group :development, :test do
+  gem "rspec-rails"
+  gem "factory_bot_rails"
+end
