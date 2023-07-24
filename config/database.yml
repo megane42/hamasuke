@@ -13,9 +13,9 @@ default: &default
   adapter: mysql2
   encoding: utf8mb4
   pool:     <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: <%= ENV.fetch("FUKUSUKE_DATABASE_USERNAME") { "root" } %>
-  password: <%= ENV.fetch("FUKUSUKE_DATABASE_PASSWORD") { "" } %>
-  host:     <%= ENV.fetch("FUKUSUKE_DATABASE_HOST") { "localhost" } %>
+  username: <%= ENV.fetch("HAMASUKE_DATABASE_USERNAME") { "root" } %>
+  password: <%= ENV.fetch("HAMASUKE_DATABASE_PASSWORD") { "" } %>
+  host:     <%= ENV.fetch("HAMASUKE_DATABASE_HOST") { "localhost" } %>
 
 development:
   <<: *default
@@ -51,5 +51,5 @@ test:
 production:
   <<: *default
   database: hamasuke_production
-  username: <%= ENV["FUKUSUKE_DATABASE_USERNAME"] %>
-  password: <%= ENV["FUKUSUKE_DATABASE_PASSWORD"] %>
+  username: <%= ENV["HAMASUKE_DATABASE_USERNAME"] %>
+  password: <%= ENV["HAMASUKE_DATABASE_PASSWORD"] %>

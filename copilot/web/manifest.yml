@@ -55,11 +55,11 @@ variables:
 environments:
   staging:
     secrets:
-      FUKUSUKE_DATABASE_HOST: /copilot/hamasuke/staging/secrets/FUKUSUKE_DATABASE_HOST
-      FUKUSUKE_DATABASE_USERNAME: /copilot/hamasuke/staging/secrets/FUKUSUKE_DATABASE_USERNAME
-      FUKUSUKE_DATABASE_PASSWORD: /copilot/hamasuke/staging/secrets/FUKUSUKE_DATABASE_PASSWORD
-      FUKUSUKE_BASIC_AUTH_ID: /copilot/hamasuke/staging/secrets/FUKUSUKE_BASIC_AUTH_ID
-      FUKUSUKE_BASIC_AUTH_PW: /copilot/hamasuke/staging/secrets/FUKUSUKE_BASIC_AUTH_PW
+      HAMASUKE_DATABASE_HOST: /copilot/hamasuke/staging/secrets/HAMASUKE_DATABASE_HOST
+      HAMASUKE_DATABASE_USERNAME: /copilot/hamasuke/staging/secrets/HAMASUKE_DATABASE_USERNAME
+      HAMASUKE_DATABASE_PASSWORD: /copilot/hamasuke/staging/secrets/HAMASUKE_DATABASE_PASSWORD
+      HAMASUKE_BASIC_AUTH_ID: /copilot/hamasuke/staging/secrets/HAMASUKE_BASIC_AUTH_ID
+      HAMASUKE_BASIC_AUTH_PW: /copilot/hamasuke/staging/secrets/HAMASUKE_BASIC_AUTH_PW
       IKEDAYAMA_API_ENDPOINT: /copilot/hamasuke/staging/secrets/IKEDAYAMA_API_ENDPOINT
       IKEDAYAMA_ACCESS_TOKEN: /copilot/hamasuke/staging/secrets/IKEDAYAMA_ACCESS_TOKEN
       IKEDAYAMA_GIFTEE_BOX_CONFIG_CODE: /copilot/hamasuke/staging/secrets/IKEDAYAMA_GIFTEE_BOX_CONFIG_CODE
@@ -81,11 +81,11 @@ environments:
 
   production:
     secrets:
-      FUKUSUKE_DATABASE_HOST: /copilot/hamasuke/production/secrets/FUKUSUKE_DATABASE_HOST
-      FUKUSUKE_DATABASE_USERNAME: /copilot/hamasuke/production/secrets/FUKUSUKE_DATABASE_USERNAME
-      FUKUSUKE_DATABASE_PASSWORD: /copilot/hamasuke/production/secrets/FUKUSUKE_DATABASE_PASSWORD
-      FUKUSUKE_BASIC_AUTH_ID: /copilot/hamasuke/production/secrets/FUKUSUKE_BASIC_AUTH_ID
-      FUKUSUKE_BASIC_AUTH_PW: /copilot/hamasuke/production/secrets/FUKUSUKE_BASIC_AUTH_PW
+      HAMASUKE_DATABASE_HOST: /copilot/hamasuke/production/secrets/HAMASUKE_DATABASE_HOST
+      HAMASUKE_DATABASE_USERNAME: /copilot/hamasuke/production/secrets/HAMASUKE_DATABASE_USERNAME
+      HAMASUKE_DATABASE_PASSWORD: /copilot/hamasuke/production/secrets/HAMASUKE_DATABASE_PASSWORD
+      HAMASUKE_BASIC_AUTH_ID: /copilot/hamasuke/production/secrets/HAMASUKE_BASIC_AUTH_ID
+      HAMASUKE_BASIC_AUTH_PW: /copilot/hamasuke/production/secrets/HAMASUKE_BASIC_AUTH_PW
       IKEDAYAMA_API_ENDPOINT: /copilot/hamasuke/production/secrets/IKEDAYAMA_API_ENDPOINT
       IKEDAYAMA_ACCESS_TOKEN: /copilot/hamasuke/production/secrets/IKEDAYAMA_ACCESS_TOKEN
       IKEDAYAMA_GIFTEE_BOX_CONFIG_CODE: /copilot/hamasuke/production/secrets/IKEDAYAMA_GIFTEE_BOX_CONFIG_CODE
