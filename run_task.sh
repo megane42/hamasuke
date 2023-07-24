@@ -3,7 +3,7 @@
 cd $(dirname $0) # どこから実行してもこのスクリプトの位置がカレントディレクトリになるようにする
 
 usage_exit() {
-  echo "Usage: AWS_PROFILE=fukusuke $0 -e {staging,production} -c {command}" 1>&2
+  echo "Usage: AWS_PROFILE=hamasuke $0 -e {staging,production} -c {command}" 1>&2
   exit 1
 }
 
@@ -26,7 +26,7 @@ fi
 
 # ------------------------------------------------------------------------------------------
 
-template=$(copilot task run --generate-cmd fukusuke/${environment}/web 2>&1)
+template=$(copilot task run --generate-cmd hamasuke/${environment}/web 2>&1)
 
 # remove existing --entrypoint and --command
 template=$(echo "${template}" | grep -v -- --entrypoint)
