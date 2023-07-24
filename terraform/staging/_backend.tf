@@ -1,8 +1,8 @@
 terraform {
   backend "s3" {
     region         = "ap-northeast-1"
-    dynamodb_table = "fukusuke-terraform-tfstate-lock"
-    bucket         = "fukusuke-terraform-tfstate"
+    dynamodb_table = "hamasuke-terraform-tfstate-lock"
+    bucket         = "hamasuke-terraform-tfstate"
     key            = "staging.tfstate"
     encrypt        = true
   }

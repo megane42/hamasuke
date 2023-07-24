@@ -1,5 +1,5 @@
 resource "aws_acm_certificate" "this" {
-  domain_name       = "stg.fukusuke.giftee.biz"
+  domain_name       = "stg.hamapay-support.giftee.biz"
   validation_method = "DNS"
 
   # https://giftee-inc.slack.com/archives/CCWRVFG4R/p1591072506419600

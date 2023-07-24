@@ -1,5 +1,6 @@
 module "aurora_mysql" {
   source  = "terraform-aws-modules/rds-aurora/aws"
+  version = "7.7.0"
 
   name              = "aurora-${local.service}-${local.env}"
   engine            = "aurora-mysql"
@@ -8,7 +9,6 @@ module "aurora_mysql" {
 
   vpc_id                 = module.vpc.vpc_id
   subnets                = module.vpc.private_subnets
-  allowed_cidr_blocks    = module.vpc.private_subnets_cidr_blocks
   create_security_group  = false
   vpc_security_group_ids = [aws_security_group.rds.id]
 

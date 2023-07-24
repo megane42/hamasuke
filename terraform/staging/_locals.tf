@@ -1,4 +1,4 @@
 locals {
-  service = "fukusuke"
+  service = "hamasuke"
   env     = "staging"
 }
