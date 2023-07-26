@@ -9,21 +9,22 @@ type: Environment
 # Import your own VPC and subnets or configure how they should be created.
 network:
   vpc:
-    id: vpc-092ddc77c70bc9d22
+    id: vpc-04d4ca8facff399d0
     subnets:
       public:
-        - id: subnet-0f98de67f19d21b3c
-        - id: subnet-0d82edf0f532e7b5b
+        - id: subnet-056daf1f6acc5beea
+        - id: subnet-0f8006381fecccbbd
       private:
-        - id: subnet-08a90d83f83c13337
-        - id: subnet-0b0cac56e9ec4891e
+        - id: subnet-01e1c0525545a2de2
+        - id: subnet-040feeb383a791a3a
 
 # Configure the load balancers in your environment, once created.
-http:
-    public:
-        certificates:
-            - arn:aws:acm:ap-northeast-1:368771686176:certificate/1e59df5f-680e-4803-a581-666431efb9ad
-        ssl_policy: ELBSecurityPolicy-FS-1-2-Res-2020-10
+# TODO: あとで修正
+# http:
+#     public:
+#         certificates:
+#             - arn:aws:acm:ap-northeast-1:368771686176:certificate/1e59df5f-680e-4803-a581-666431efb9ad
+#         ssl_policy: ELBSecurityPolicy-FS-1-2-Res-2020-10
 
 # Configure observability for your environment resources.
 observability:

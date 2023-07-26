@@ -74,10 +74,11 @@ environments:
     network:
       vpc:
         security_groups:
-          - sg-048075bab6ab266c2 # security_group_rds_hamasuke_staging
-          - sg-0b8795b7fface8d65 # security_group_elasticache_hamasuke_staging
-    http:
-      alias: stg.hamasuke.giftee.biz
+          - sg-0b03dc62d44688c44 # security_group_rds_hamasuke_staging
+          - sg-02cd542a9fa7a0454 # security_group_elasticache_hamasuke_staging
+    # TODO: あとで有効にする
+    # http:
+    #   alias: stg.hamapay-support.giftee.biz
 
   production:
     secrets:
@@ -100,7 +101,8 @@ environments:
     network:
       vpc:
         security_groups:
-          - sg-0a5251cb4737e63d8 # security_group_rds_hamasuke_production
-          - sg-0a5ddf2f7951281fb # security_group_elasticache_hamasuke_production
-    http:
-      alias: hamasuke.giftee.biz
+          - sg-082bf3a11c0fc0bd0 # security_group_rds_hamasuke_production
+          - sg-04efa4b526e6fdc1f # security_group_elasticache_hamasuke_production
+    # TODO: あとで有効にする
+    # http:
+    #   alias: hamapay-support.giftee.biz
