@@ -19,12 +19,11 @@ network:
         - id: subnet-0a58b5afc60deb707
 
 # Configure the load balancers in your environment, once created.
-# TODO: あとで修正
-# http:
-#     public:
-#         certificates:
-#             - arn:aws:acm:ap-northeast-1:368771686176:certificate/e348a27b-e926-4c9b-bd2b-4a97ffccbc3e
-#         ssl_policy: ELBSecurityPolicy-FS-1-2-Res-2020-10
+http:
+    public:
+        certificates:
+            - arn:aws:acm:ap-northeast-1:368771686176:certificate/4968ed3f-bc40-49f1-9338-3cae6492f466
+        ssl_policy: ELBSecurityPolicy-FS-1-2-Res-2020-10
 
 # Configure observability for your environment resources.
 observability:

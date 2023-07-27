@@ -76,9 +76,8 @@ environments:
         security_groups:
           - sg-0b03dc62d44688c44 # security_group_rds_hamasuke_staging
           - sg-02cd542a9fa7a0454 # security_group_elasticache_hamasuke_staging
-    # TODO: あとで有効にする
-    # http:
-    #   alias: stg.hamapay-support.giftee.biz
+    http:
+      alias: stg.ecohama-pay-support.giftee.biz
 
   production:
     secrets:
@@ -103,6 +102,5 @@ environments:
         security_groups:
           - sg-082bf3a11c0fc0bd0 # security_group_rds_hamasuke_production
           - sg-04efa4b526e6fdc1f # security_group_elasticache_hamasuke_production
-    # TODO: あとで有効にする
-    # http:
-    #   alias: hamapay-support.giftee.biz
+    http:
+      alias: ecohama-pay-support.giftee.biz
