@@ -20,13 +20,13 @@ git grep -l 'Fukusuke' | xargs sed -i '' -e 's/Fukusuke/Hamasuke/g'
 git grep -l 'FUKUSUKE' | xargs sed -i '' -e 's/FUKUSUKE/HAMASUKE/g'
 ```
 
-## terraform 修正
+## terraform (base) 修正
 
 - ドメイン名だけプロダクトごとに修正が必要
-  - terraform/staging/acm.tf
-  - terraform/production/acm.tf
+  - terraform/staging_base/acm.tf
+  - terraform/production_base/acm.tf
 
-## terraform 実行
+## terraform (base) 実行
 
 ```
 AWS_PROFILE=fukusuke terraform init
@@ -110,3 +110,13 @@ AWS_PROFILE=fukusuke dotenv copilot svc deploy --env production --name worker
 
 - 前のステップでいったんコメントアウトしておいた http alias 関連を有効にして、copilot env deploy と copilot svc deploy をやり直す
     - このメモを書いたときはこの手順で作業したが、よく見たら copilot/web/manifest.yml のドメインを間違えてたので、もしかしたらそこを正せば「いったんコメントアウト」のステップは要らなかったかもしれない
+
+## terraform (after_copilot) 修正
+
+- copilot で作られた ALB の ARN を書く
+  - terraform/staging_after_copilot/wafv2_web_acl_association.tf
+  - terraform/production_after_copilot/wafv2_web_acl_association.tf
+
+## terraform (after_copilot) 実行
+
+- コマンドは base と同じなので割愛
